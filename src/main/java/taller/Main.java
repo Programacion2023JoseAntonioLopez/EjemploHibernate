@@ -86,7 +86,7 @@ public class Main {
         EntityTransaction tx = null;
 
         try {
-            Long total = em.createNamedQuery("Coche.contarTodos", Long.class)
+            Long total = em.createNamedQuery(Coche.CONTAR_TODOS, Long.class)
                     .getSingleResult();
 
             if (total == 0) {
@@ -284,7 +284,7 @@ public class Main {
      */
     public static void mostrarCoches() {
         try {
-            Query q = em.createNamedQuery("Coche.listarTodos", Coche.class);
+            Query q = em.createNamedQuery(Coche.LISTAR_TODOS, Coche.class);
 
             List<Coche> lista = q.getResultList();
 
@@ -313,9 +313,10 @@ public class Main {
             System.out.println("\nBÚSQUEDA POR MARCA");
 
             String marcaBuscada = leerTextoObligatorio("Marca: ");
-
-            Query q = em.createNamedQuery("Coche.buscarPorMarca", Coche.class);
-            q.setParameter("marca", marcaBuscada);
+            //Construimos la Select
+            Query q = em.createNamedQuery(Coche.BUSCAR_POR_MARCA, Coche.class);
+            //incluimos el parámetro
+            q.setParameter(Coche.BUSCAR_POR_MARCA_marca, marcaBuscada);
 
             List<Coche> lista = q.getResultList();
 

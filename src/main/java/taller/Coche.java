@@ -27,6 +27,16 @@ import java.io.Serializable;
 })
 //la clase tiene que ser serializable
 public class Coche implements Serializable {
+    //Para no equivocarnos al llamar a las consultas por nombre, creamos
+    //constantes con los nombres anteriores
+    static final String CONTAR_TODOS="Coche.contarTodos";
+    static final String LISTAR_TODOS="Coche.listarTodos";
+    static final String BUSCAR_POR_MARCA="Coche.buscarPorMarca";
+    //EL parámetro de la consulta anterior
+    static final String BUSCAR_POR_MARCA_marca="marca";
+
+
+
     //la clave primaria será la matrícula
     @Id
     private String matricula;
