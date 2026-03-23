@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- Configuración de JPA (Jakarta Persistence) -->
+<!-- Ubicación del esquema XML incluida en xsi:schemaLocation -->
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <!-- Unidad de persistencia -->
+    <persistence-unit name="default">
+
+        <!-- Proveedor JPA (Hibernate en este caso) -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Clase entidad que se va a mapear -->
+        <class>taller.Coche</class>
+
+        <properties>
+
+            <!-- Driver JDBC de MariaDB -->
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="org.mariadb.jdbc.Driver"/>
+
+            <!-- URL de conexión a la base de datos -->
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mariadb://localhost:3306/taller"/>
+
+            <!-- Usuario de la base de datos -->
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+
+            <!-- Contraseña -->
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+
+            <!-- Acción sobre la base de datos al iniciar -->
+
+            <property name="jakarta.persistence.schema-generation.database.action"
+                      value="create"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>
