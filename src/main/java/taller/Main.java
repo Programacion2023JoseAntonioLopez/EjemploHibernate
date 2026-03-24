@@ -128,7 +128,7 @@ public class Main {
     private static void crearCoche() {
 
         EntityTransaction tx = null;
-        boolean valido = true;
+
 
         try {
             System.out.println("\nALTA DE NUEVO COCHE");
@@ -140,15 +140,11 @@ public class Main {
 
             if (numPlazas <= 0) {
                 System.out.println("Error: número de plazas inválido.");
-                valido = false;
-            }
 
-            if (valido && em.find(Coche.class, matricula) != null) {
+            }else if ( em.find(Coche.class, matricula) != null) {
                 System.out.println("Error: ya existe un coche con esa matrícula.");
-                valido = false;
-            }
 
-            if (valido) {
+            }else  {
                 Coche c = new Coche(matricula, marca, modelo, numPlazas);
 
                 tx = em.getTransaction();
@@ -200,7 +196,7 @@ public class Main {
     private static void modificarCoche() {
 
         EntityTransaction tx = null;
-        boolean valido = true;
+
 
         try {
             System.out.println("\nMODIFICACIÓN DE COCHE");
@@ -223,10 +219,8 @@ public class Main {
 
                 if (plazas <= 0) {
                     System.out.println("Error: número de plazas inválido.");
-                    valido = false;
-                }
 
-                if (valido) {
+                }else  {
                     tx = em.getTransaction();
                     tx.begin();
 
